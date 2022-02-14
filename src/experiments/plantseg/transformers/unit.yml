@@ -1,0 +1,11 @@
+transform_type: unit
+transformer:
+  label:
+  - append_label: true
+    name: StandardLabelToBoundary
+  - expand_dims: false
+    name: ToTensor
+  raw:
+  - name: Standardize
+  - expand_dims: true
+    name: ToTensor

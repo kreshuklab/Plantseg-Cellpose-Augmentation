@@ -1,0 +1,5 @@
+model_type: plantseg
+exp_id: -1
+trainingset: <Name of trainingset>
+augmentations: None
+

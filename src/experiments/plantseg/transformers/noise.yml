@@ -1,0 +1,15 @@
+transform_type: noise
+transformer:
+  label:
+  - append_label: true
+    name: StandardLabelToBoundary
+  - expand_dims: false
+    name: ToTensor
+  raw:
+  - name: Standardize
+  - execution_probability: 0.25
+    name: AdditiveGaussianNoise
+  - execution_probability: 0.25
+    name: AdditivePoissonNoise
+  - expand_dims: true
+    name: ToTensor

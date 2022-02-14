@@ -1,0 +1,27 @@
+transform_type: geometric
+transformer:
+  label:
+  - name: RandomFlip
+  - name: RandomRotate90
+  - angle_spectrum: 15
+    axes:
+    - - 2
+      - 1
+    mode: reflect
+    name: RandomRotate
+  - append_label: true
+    name: StandardLabelToBoundary
+  - expand_dims: false
+    name: ToTensor
+  raw:
+  - name: Standardize
+  - name: RandomFlip
+  - name: RandomRotate90
+  - angle_spectrum: 15
+    axes:
+    - - 2
+      - 1
+    mode: reflect
+    name: RandomRotate
+  - expand_dims: true
+    name: ToTensor

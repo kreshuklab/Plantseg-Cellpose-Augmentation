@@ -1,0 +1,14 @@
+transformer:
+  label:
+  - name: Unit
+  raw:
+  - execution_probability: 0.25
+    name: AdditiveGaussianNoise
+    scale:
+      - 0.
+      - 0.4
+  - execution_probability: 0.25
+    name: AdditivePoissonNoise
+    lam:
+      - 0.
+      - 0.4

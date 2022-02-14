@@ -1,0 +1,32 @@
+transform_type: all_0
+transformer:
+  raw:
+    - name: Standardize
+    - name: RandomFlip
+    - name: RandomRotate90
+    - name: RandomRotate
+      # rotate only in ZY plane due to anisotropy
+      axes: [[2, 1]]
+      angle_spectrum: 15
+      mode: reflect
+    - name: RandomContrast
+    - name: AdditiveGaussianNoise
+      execution_probability: 0.25
+    - name: AdditivePoissonNoise
+      execution_probability: 0.25
+    - name: ToTensor
+      expand_dims: true
+  label:
+    - name: RandomFlip
+    - name: RandomRotate90
+    - name: RandomRotate
+      # rotate only in ZY plane due to anisotropy
+      axes: [[2, 1]]
+      angle_spectrum: 15
+      mode: reflect
+    - name: StandardLabelToBoundary
+      # append original ground truth labels to the last channel (to be able to compute the eval metric)
+      append_label: true
+    - name: ToTensor
+      expand_dims: false
+    

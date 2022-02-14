@@ -1,0 +1,29 @@
+transformer:
+  label:
+  - name: RandomFlip
+  - name: RandomRotate90
+  - angle_spectrum: 15
+    axes:
+    - - 2
+      - 1
+    name: RandomRotate
+  raw:
+  - name: RandomFlip
+  - name: RandomRotate90
+  - angle_spectrum: 15
+    axes:
+    - - 2
+      - 1
+    name: RandomRotate
+  - name: RandomContrast
+  - execution_probability: 0.25
+    name: AdditiveGaussianNoise
+    scale:
+    - 0.0
+    - 0.4
+  - execution_probability: 0.25
+    lam:
+    - 0.0
+    - 0.4
+    name: AdditivePoissonNoise
+    

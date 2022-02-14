@@ -1,0 +1,13 @@
+exp_id: 302
+model_type: cellpose
+predsets:
+- FM
+- Ovules
+- SAM_SMALL
+trainset: SAM_SMALL
+transform_type: contrast
+transformer:
+  label:
+  - name: Unit
+  raw:
+  - name: RandomContrast

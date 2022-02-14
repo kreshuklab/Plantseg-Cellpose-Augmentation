@@ -1,0 +1,17 @@
+transformer:
+  label:
+  - name: RandomFlip
+  - name: RandomRotate90
+  - angle_spectrum: 15
+    axes:
+    - - 2
+      - 1
+    name: RandomRotate
+  raw:
+  - name: RandomFlip
+  - name: RandomRotate90
+  - angle_spectrum: 15
+    axes:
+    - - 2
+      - 1
+    name: RandomRotate

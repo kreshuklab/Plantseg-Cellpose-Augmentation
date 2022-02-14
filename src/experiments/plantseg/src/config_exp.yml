@@ -1,0 +1,19 @@
+exp_id: 704
+model_type: plantseg
+predsets:
+- FM
+- Ovules
+- SAM_SMALL
+trainset: FM
+transform_type: motionblur
+transformer:
+  label:
+  - append_label: true
+    name: StandardLabelToBoundary
+  - expand_dims: false
+    name: ToTensor
+  raw:
+  - name: Standardize
+  - name: MotionBlur
+  - expand_dims: true
+    name: ToTensor
