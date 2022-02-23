@@ -1,14 +1,3 @@
-import os
-from sqlite3 import connect
-from skimage import io
-from skimage.metrics import variation_of_information
-from collections import defaultdict
-from jseg import utils
-import pandas as pd
-import numpy as np
-
-import scipy.ndimage as nd
-import pandas as pd
 from collections import defaultdict
 
 SEGMENTATION_TYPES = ["extra-segmentation",
@@ -20,34 +9,9 @@ SEGMENTATION_TYPES = ["extra-segmentation",
                       ]
 
 
-def get_vji(ground_truth, prediction, background_label):
-    """Vlumetric jaccard index
-    """
-    gt_unique = np.unique(ground_truth)
-    pr_unique = np.unique(prediction)
-    total_g = 0
-    total_val = 0
-    for g in gt_unique:
-        if g == background_label: continue
-        g_coords = np.where(ground_truth == g)
-        g_set = set((coord) for coord in zip(*g_coords))
-        total_g += len(g_set)
-        best_p = 1
-        best_val = 0
-        for p in pr_unique:
-            if p == background_label: continue
-            p_coords = np.where(prediction == p)
-            p_set = set((coord) for coord in zip(*p_coords))
-            val = len(g_set)*len(g_set.intersection(p_set))/len(g_set.union(p_set))
-            if val >= best_val:
-                best_val = val
-                best_p = p
-
-        total_val += best_val
-    return total_val / total_g
-
-
 def segmentation_type(cont_table, num_grund_truth, background_label):
+    """Claculate the rates of the different segmentation types.
+    """
     clusters = create_clusters(cont_table, background_label)
     # correct
     num_correct = count_kv(clusters,'ground_truth', 'segmentation-type' ,'correct-segmentation',background_label)
@@ -78,6 +42,8 @@ def get_count_of_key_in_list(lis,key):
     return count
     
 def create_clusters(cont_table, background_label):   
+    """ Create clusters from the contingency table and classify them
+    """
     connections = create_connections(cont_table)
     # Remove any connection with label background
     if (background_label, background_label) in connections:
