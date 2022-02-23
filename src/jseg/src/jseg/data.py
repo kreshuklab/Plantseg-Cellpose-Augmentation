@@ -16,10 +16,12 @@ OVERLAPPING_CIRCLE_TYPES = ("over-segmentation",
                             )
 
 def overlapping_circles(segmentation_type:str= 'over-segmentation', background_label:int= 0,
-                        shape:tuple= None, radius:float=None, offset:int=None, extend_axis:int= None, label_shift = False):
+                        shape:tuple= None, radius:float=None, offset:int=None,
+                        extend_axis:int= None, label_shift = False):
     """
-    Returns a tuple of two numpy.ndarrays. The arrays can be seen as images with two linked circles.
-    The circles can either have the same label (same value) or different.
+    Returns a tuple of two numpy.ndarrays. The arrays can be seen as images'.
+    The images have some number of disks depending on the 'segmentation_type'-input.
+    The disks can either have the same label (same value) or different.
     """
 
 

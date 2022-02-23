@@ -2,9 +2,6 @@ import numpy as np
 
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
-def test_function():
-    print("Function is working!")
-
 
 
 def keep_labels(label_array, labels, reset_value = 0):
