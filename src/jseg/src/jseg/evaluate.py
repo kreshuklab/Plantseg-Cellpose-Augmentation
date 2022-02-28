@@ -15,7 +15,7 @@ PRED_IDENTIFIER = 'pred'
 
 
 
-def evaluate_segmentation(ground_truth, prediction):
+def evaluate_segmentation(ground_truth, prediction, background_label=1):
     """
     Calculates meassures over the ground truth and prediction.
 
